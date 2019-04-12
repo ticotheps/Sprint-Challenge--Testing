@@ -18,18 +18,11 @@ server.get("/games", async (req, res) => {
 
 server.post("/games", async (req, res) => {
   try {
-    const [id] = await games.insert(req.body);
+    const row = await games.insert(req.body);
 
-    const game = await db("games")
-      .where({ id })
-      .first();
-
-    res.status(201).json(game);
+    res.status(201).json(row);
   } catch (error) {
-    const message =
-      errors[error.errno] ||
-      "We ran into an error trying to add a game to the database";
-    res.status(500).json({ message, error });
+    res.status(500).json({ error });
   }
 });
 

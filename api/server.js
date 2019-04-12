@@ -6,17 +6,17 @@ const server = express();
 
 server.use(express.json());
 
-server.get('/api', async (req, res) => {
-    res.status(200).json({ api: "It's working!!!" });
+server.get('/', async (req, res) => {
+    res.status(200).json({ api: 'It is working!!!' });
 });
 
-server.get('/api/games', async (req, res) => {
+server.get('/games', async (req, res) => {
     const rows = await games.getAll();
 
     res.status(200).json(rows);
 });
 
-server.post('/api/games', async (req, res) => {
+server.post('/games', async (req, res) => {
     try {
       const [id] = await db('games').insert(req.body);
   

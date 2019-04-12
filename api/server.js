@@ -17,13 +17,19 @@ server.get("/games", async (req, res) => {
 });
 
 server.post("/games", async (req, res) => {
-  try {
-    const row = await games.insert(req.body);
+    let { title, genre } = req.body;
 
-    res.status(201).json(row);
-  } catch (error) {
-    res.status(500).json({ error });
-  }
+    if (title && genre) {
+        try {
+            const row = await games.insert(req.body);
+        
+            res.status(201).json(row);
+        } catch (error) {
+            res.status(500).json({ error });
+        }
+    } else {
+        res.status(422).json({ message: "Please include a title and a genre for your new game!" });
+    }
 });
 
 module.exports = server;

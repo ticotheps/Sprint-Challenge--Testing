@@ -1,11 +1,12 @@
 const db = require('../data/dbConfig.js');
 const Games = require('./gamesModel.js');
+const knexCleaner = require('knex-cleaner');
 
 
 describe('games model', () => {
-  beforeEach(async () => {
-    await db('games').truncate();
-  });
+    beforeEach(async () => {
+        await db('games').truncate();
+    });
 
   describe('insert()', () => {
     it('should insert the provided games', async () => {
@@ -15,14 +16,6 @@ describe('games model', () => {
 
       const games = await db('games');
       expect(games).toHaveLength(3);
-    });
-
-    it('should insert the provided game', async () => {
-      let game = await games.insert({ title: 'Super Mario World 3' });
-      expect(game.title).toBe('Super Mario World 3');
-
-      game = await games.insert({ title: 'NBA JAM' });
-      expect(game.title).toBe('NBA JAM');
     });
   });
 });

@@ -11,9 +11,14 @@ server.get("/", async (req, res) => {
 });
 
 server.get("/games", async (req, res) => {
-  const rows = await games.getAll();
-
-  res.status(200).json(rows);
+    const rows = await games.getAll();
+    const empty = [];
+    
+    if (rows.length === 0) {
+        res.status(200).json(empty);
+    } else {
+        res.status(200).json(rows);
+    }
 });
 
 server.post("/games", async (req, res) => {

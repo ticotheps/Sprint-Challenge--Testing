@@ -1,11 +1,15 @@
+process.env.NODE_ENV = "test";
 const db = require('../data/dbConfig.js');
 const Games = require('./gamesModel.js');
-const knexCleaner = require('knex-cleaner');
 
 
 describe('games model', () => {
     beforeEach(async () => {
         await db('games').truncate();
+    });
+
+    afterEach(async () => {
+      await db('games').truncate();
     });
 
   describe('insert()', () => {

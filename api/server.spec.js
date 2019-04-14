@@ -61,19 +61,38 @@ describe("server.js", () => {
   });
 
   describe("POST /games", () => {
-    it("should work", () => {
+    it("should work when both, the title and the genre fields, are provided with values", () => {
       return request(server)
-        .post("/games")
-        .expect(422);
+		.post("/games")
+		.send({
+			title: "Mega Man",
+			genre: "Adventure",
+			releaseYear: 1993
+		})
+        .expect(201);
     });
 
-    it("should respond with 422 if information is incomplete", () => {
+    it("should respond with 422 if there no value for the title key was provided", () => {
       return request(server)
-        .post("/games")
-        .then(response => {
-          expect(response.status).toBe(422);
-        });
-    });
+		.post("/games")
+		.send({
+			title: "",
+			genre: "Adventure",
+			releaseYear: 1993
+		})
+        .expect(422);
+	});
+	
+	it("should respond with 422 if there no value for the genre key was provided", () => {
+		return request(server)
+		  .post("/games")
+		  .send({
+			  title: "Mega Man",
+			  genre: "",
+			  releaseYear: 1993
+		  })
+		  .expect(422);
+	  });
 
     it("should respond with 422 when asynchronous and information is incomplete", async () => {
       const response = await request(server).post("/games");

@@ -21,5 +21,12 @@ describe('games model', () => {
       const games = await db('games');
       expect(games).toHaveLength(3);
     });
+
+    it('should insert the provide games', async () => {
+      await Games.insert({ title: 'Super Mario World 3', genre: 'Adventure', releaseYear: 1988 });
+
+      const games = await db('games');
+      expect(games).toHaveLength(1);
+    });
   });
 });

@@ -25,8 +25,20 @@ In this challenge use `Test Driven Development` to build a RESTful API using Nod
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 1. In Jest, what are the differences between `describe()` and `it()` globals, and what are good uses for them?
-1. What is the point of `Test Driven Development`? What do you think about this approach?
-1. Mention three types of automated tests.
+
+  The “describe( )” global function in Jest is used to encapsulate test suites, or collections of tests. This is useful during TDD because it creates a visual hierarchy for you when you execute Jest with the “—verbose” flag on your “start” script in the package.json file. On the other hand, the “it( )” global function in Jest is most often a nested inside of the “describe ( )” global function because instead of acting as a container for test suites, this global function acts as a container for unit tests. When you have a large code base, it is very beneficial to use BOTH of these global functions during TDD because they will help provide easy-to-read structure and organization to improve maintainability of your code.
+
+
+2. What is the point of `Test Driven Development`? What do you think about this approach?
+
+  The main focus of the “Test Driven Development” process is to increase your “test-coverage” or the percentage of your code that is tested automatically. The higher this percentage, the less chances that you’ll have bugs in your code. Despite having learned how to write code before learning how to write tests, I can really appreciate the approach of TDD because it is “proactive” versus “reactive”. How we approach our physical health can be a great analogy to explain why a ‘proactive’ approach is better than a ‘reactive’ approach. For instance, if you spend your whole life chasing money and ignoring your health, you may be wildly successful, but the ‘principle of allocation’ will eventually come ‘full circle’ for you. This biological principle is the idea that time spent doing one activity (i.e. - working long hours to become extremely successful at something) is equal to time NOT spent doing another activity (i.e. - eating well, sleeping adequately, exercising on a daily-basis, etc.) because you cannot be in two places at once. Therefore, when trading ‘health’ for ‘success’, you may initially feel inconvenienced to go to a doctor’s appointment because you ‘could have been working’ instead, but when the doctor diagnoses you with a stress-related illness of unknown causes, it’s at that moment that you “wished” you would have been more “proactive” in your approach towards your health. The same goes for programming. When you’re spending countless hours trying to debug a code base with thousands of lines of code because of angry customers complaining about frequent failure of your app, you’ll also have “wished” you had taken a TDD approach. That extra hour or two spent writing tests to prevent future countless hours debugging code is well worth the investment.
+
+
+3. Mention three types of automated tests.
+
+  There are many types of automated tests used for TDD/BDD, but some types of automated tests that we have covered so far include: ‘unit tests’ (which test a single “unit” of code, i.e. - a single function), ‘component tests’ (which test individual components for component-based frameworks, i.e. - React, Angular, etc.), and ‘snapshot tests’ (which test a current output of a component against a prior output of that same component).
+
+
 
 ## Project Set Up
 
